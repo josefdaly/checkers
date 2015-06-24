@@ -1,5 +1,5 @@
 require_relative 'errors'
-require 'debugger'
+
 
 class HumanPlayer
   attr_reader :color
@@ -15,9 +15,11 @@ class HumanPlayer
     while sequence.uniq.length == sequence.length
       sequence << move_cursor("#{@color}'s turn. \n#{sequence}")
     end
+
+    raise NoPieceSelectedError if @board[sequence.first].nil?
     raise WrongPieceError if @board[sequence.first].color != @color
     raise NoMoveError if sequence.first == sequence.last
-    raise NoPieceSelectedError if @board[sequence.first].nil?
+    
 
     sequence = (sequence.uniq)
     duped_board = @board.deep_dup

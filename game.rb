@@ -1,5 +1,7 @@
 require_relative 'board.rb'
 require_relative 'human_player.rb'
+require 'sinatra'
+
 class Game
   def initialize(player1 = HumanPlayer.new(:red),
     player2 = HumanPlayer.new(:black))
@@ -41,8 +43,7 @@ class Game
   end
 end
 
-if __FILE__ == $PROGRAM_NAME
+get '/' do
   game = Game.new
-
   game.play
 end

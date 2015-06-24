@@ -1,7 +1,6 @@
 require_relative 'piece'
 require 'colorize'
 require 'io/console'
-require 'debugger'
 
 class Board
 
@@ -72,7 +71,7 @@ class Board
       pieces(color).each do |piece|
         duped_piece = piece.dup
         dup_board[piece.pos] = duped_piece
-        duped_piece.board = dup_board       
+        duped_piece.board = dup_board
       end
     end
 
@@ -104,16 +103,4 @@ class Board
   end
 
 
-end
-
-if __FILE__ == $PROGRAM_NAME
-  board = Board.new
-  board.render
-  print board.grid[5][1].possible_moves
-  gets
-  board.grid[5][1].perform_slide([4,0])
-  board.render
-  gets
-  board.grid[4][0].perform_slide([-1,3])
-  board.render
 end
