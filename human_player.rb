@@ -19,7 +19,7 @@ class HumanPlayer
     raise NoPieceSelectedError if @board[sequence.first].nil?
     raise WrongPieceError if @board[sequence.first].color != @color
     raise NoMoveError if sequence.first == sequence.last
-    
+
 
     sequence = (sequence.uniq)
     duped_board = @board.deep_dup
@@ -35,13 +35,13 @@ class HumanPlayer
     input = ""
     until input == "\r"
       @board.render(message)
-      input = STDIN.getch
+      input = gets.chomp
       @board.cursor[0] += 1 if input == 'k' && @board.cursor[0] + 1 < 8
       @board.cursor[0] -= 1 if input == 'i' && @board.cursor[0] - 1 >= 0
       @board.cursor[1] -= 1 if input == 'j' && @board.cursor[1] - 1 >= 0
       @board.cursor[1] += 1 if input == 'l' && @board.cursor[1] + 1 < 8
     end
-    
+
     @board.cursor.dup
   end
 end
