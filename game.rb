@@ -43,7 +43,7 @@ class Game
   end
 end
 
-get '/' do
+if __FILE__ == $PROGRAM_NAME
   game = Game.new
   game.play
 end

@@ -35,7 +35,7 @@ class HumanPlayer
     input = ""
     until input == "\r"
       @board.render(message)
-      input = gets.chomp
+      input = STDIN.getch
       @board.cursor[0] += 1 if input == 'k' && @board.cursor[0] + 1 < 8
       @board.cursor[0] -= 1 if input == 'i' && @board.cursor[0] - 1 >= 0
       @board.cursor[1] -= 1 if input == 'j' && @board.cursor[1] - 1 >= 0
