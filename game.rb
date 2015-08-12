@@ -1,6 +1,5 @@
 require_relative 'board.rb'
 require_relative 'human_player.rb'
-require 'sinatra'
 
 class Game
   def initialize(player1 = HumanPlayer.new(:red),
